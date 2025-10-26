@@ -19,7 +19,9 @@ class CurrencyViewModel : ViewModel() {
             if (it?.exchangeRate == null){
                 _currency.value = listOf()
             }else{
-                _currency.value = it.exchangeRate
+                _currency.value = it.exchangeRate.filter{ rate ->
+                    (rate.purchaseRate != null) or (rate.saleRate != null)
+                }
             }
         }
     }
