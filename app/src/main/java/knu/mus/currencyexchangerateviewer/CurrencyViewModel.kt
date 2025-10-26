@@ -1,11 +1,12 @@
 package knu.mus.currencyexchangerateviewer
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.MutableLiveData
 import knu.mus.currencyexchangerateviewer.items.ExchangeRate
 import knu.mus.currencyexchangerateviewer.retrofit.RetrofitCurrency
 
-class CurrencyViewModel {
+class CurrencyViewModel : ViewModel() {
 
     private val retrofitObject: RetrofitCurrency = RetrofitCurrency()
 

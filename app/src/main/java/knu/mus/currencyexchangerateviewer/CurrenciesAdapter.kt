@@ -1,6 +1,5 @@
 package knu.mus.currencyexchangerateviewer
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.util.Log
@@ -9,26 +8,24 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import knu.mus.currencyexchangerateviewer.items.ExchangeRate
 
 class CurrenciesAdapter :
-    ListAdapter<CurrencyItem, CurrenciesAdapter.ViewHolder>(ItemDiffCallback) {
+    ListAdapter<ExchangeRate, CurrenciesAdapter.ViewHolder>(ItemDiffCallback) {
 
     init {
         Log.d(TAG, "CurrenciesAdapter init")
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView
+        val currency: TextView = view.findViewById(R.id.currency)
+        val buy: TextView = view.findViewById(R.id.buy)
+        val sell: TextView = view.findViewById(R.id.sell)
 
-        init {
-            Log.d(TAG, "ViewHolder.init")
-            textView = view.findViewById(R.id.textView)
-        }
-
-        fun bind(item: CurrencyItem) {
-            Log.d(TAG, "BIND")
-            // TODO
-            textView.text = item.currency
+        fun bind(item: ExchangeRate) {
+            currency.text = item.currency
+            buy.text = item.purchaseRate.toString()
+            sell.text = item.saleRate.toString()
         }
     }
 
@@ -55,12 +52,12 @@ class CurrenciesAdapter :
     }
 }
 
-object ItemDiffCallback : DiffUtil.ItemCallback<CurrencyItem>() {
-    override fun areItemsTheSame(oldItem: CurrencyItem, newItem: CurrencyItem): Boolean {
+object ItemDiffCallback : DiffUtil.ItemCallback<ExchangeRate>() {
+    override fun areItemsTheSame(oldItem: ExchangeRate, newItem: ExchangeRate): Boolean {
         return oldItem == newItem
     }
 
-    override fun areContentsTheSame(oldItem: CurrencyItem, newItem: CurrencyItem): Boolean {
+    override fun areContentsTheSame(oldItem: ExchangeRate, newItem: ExchangeRate): Boolean {
         return oldItem.currency == newItem.currency
     }
 }

@@ -6,20 +6,104 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <ScrollView
+        android:padding="4dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteY="1dp" />
+        app:layout_constraintBottom_toTopOf="@+id/editTextDate"
+        app:layout_constraintTop_toBottomOf="@+id/currency4">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteX="0dp" />
+        </LinearLayout>
+    </ScrollView>
+
+
+    <TextView
+        android:id="@+id/currency2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginTop="48dp"
+        android:text="CURRENCY"
+        android:textAppearance="?attr/textAppearanceHeadline5"
+        android:textColor="#909090"
+        app:layout_constraintEnd_toStartOf="@+id/currency4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textSell"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginTop="48dp"
+        android:text="SELL"
+        android:textAppearance="?attr/textAppearanceHeadline5"
+        android:textColor="#909090"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/currency4"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/currency4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginTop="48dp"
+        android:text="BUY"
+        android:textAppearance="?attr/textAppearanceHeadline5"
+        android:textColor="#909090"
+        app:layout_constraintEnd_toStartOf="@+id/textSell"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/currency2"
+        app:layout_constraintTop_toTopOf="parent" />
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="24dp"
         android:text="Load"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/editTextDate"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="138dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="24dp"
+        android:ems="10"
+        android:hint="date"
+        android:inputType="date"
+        android:text="01.09.2025"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/editTextText"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button" />
+
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="119dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="24dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="UAH"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/editTextDate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

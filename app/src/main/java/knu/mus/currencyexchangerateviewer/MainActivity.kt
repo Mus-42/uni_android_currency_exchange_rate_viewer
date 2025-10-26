@@ -7,10 +7,10 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
+import knu.mus.currencyexchangerateviewer.items.ExchangeRate
 
 class MainActivity : AppCompatActivity() {
-    val viewModel by viewModels<CurrencyListViewModel>();
+    val viewModel by viewModels<CurrencyViewModel>();
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,12 +26,12 @@ class MainActivity : AppCompatActivity() {
 
         // TODO viewModel.someData.onObserve do something with adapter
 
-        viewModel.liveData.observe(this) { newCurrencyItems: List<CurrencyItem> ->
-            Log.d(TAG, "submit list ${newCurrencyItems.size}")
-            adapter.submitList(newCurrencyItems)
+        viewModel.currency.observe(this) { newExchangeRates: List<ExchangeRate> ->
+            Log.d(TAG, "submit list ${newExchangeRates.size}")
+            adapter.submitList(newExchangeRates)
         }
 
-        viewModel.load();
+        viewModel.fetchData("14.10.2025");
     }
 
     companion object {
